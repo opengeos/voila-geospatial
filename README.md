@@ -9,4 +9,8 @@ license: mit
 app_port: 8866
 ---
 
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+## Links
+
+- GitHub: <https://github.com/opengeos/voila-geospatial>
+- Hugging Face: <https://huggingface.co/spaces/giswqs/voila-geospatial/tree/main>
+- Web App: <https://giswqs-voila-geospatial.hf.space>
