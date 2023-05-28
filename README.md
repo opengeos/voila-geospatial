@@ -21,7 +21,7 @@ app_port: 8866
 
    ![](https://i.imgur.com/4ib5BzB.png)
 
-2. Set environment variables as need. For example, if you use Google Earth Engine, you need to set `EARTHENGINE_TOKEN` to your Earth Engine token. The token value should be copied from the following file depending on your operating system:
+2. Set environment variables as needed. For example, if you use Google Earth Engine, you need to set `EARTHENGINE_TOKEN` to your Earth Engine token. The token value should be copied from the following file depending on your operating system:
 
    ```text
    Windows: C:\\Users\\USERNAME\\.config\\earthengine\\credentials
