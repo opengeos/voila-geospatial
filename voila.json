@@ -1,0 +1,11 @@
+{
+  "Voila": {
+    "ip":"0.0.0.0",
+    "port": 7860,
+    "tornado_settings": {
+      "headers": {
+        "Content-Security-Policy": "frame-ancestors self *"
+      }
+    }
+  }
+}
