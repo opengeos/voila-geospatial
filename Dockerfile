@@ -1,6 +1,7 @@
 FROM jupyter/base-notebook:latest
 
 RUN mamba install -c conda-forge leafmap geemap mapwidget geopandas localtileserver voila nodejs maplibre typing_extensions==4.11.0 -y && \
+    pip install -U leafmap && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
