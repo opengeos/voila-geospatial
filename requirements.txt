@@ -1,4 +1,4 @@
 voila
 geemap
-leafmap
+leafmap["maplibre"]
 
