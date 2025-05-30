@@ -1,26 +1,20 @@
-FROM jupyter/base-notebook:latest
+FROM condaforge/mambaforge:latest
 
-RUN mamba install -c conda-forge leafmap geemap mapwidget geopandas localtileserver voila nodejs maplibre typing_extensions==4.11.0 -y && \
-    pip install -U leafmap && \
-    fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}"
+# The HF Space container runs with user ID 1000.
+RUN useradd -m -u 1000 user
+USER user
 
-# COPY requirements.txt .
-# RUN pip install --no-cache-dir -r requirements.txt
+# Set home to the user's home directory
+ENV HOME=/home/user \
+  PATH=/home/user/.local/bin:$PATH
 
-RUN mkdir ./notebooks
-COPY /notebooks ./notebooks
+# Set the working directory to the user's home directory
+WORKDIR $HOME/app
+COPY --chown=user . .
 
-COPY run.sh .
+RUN mamba env create --prefix $HOME/env  -f ./environment.yml
 
-ENV PROJ_LIB='/opt/conda/share/proj'
+EXPOSE 7860
+WORKDIR $HOME/app
 
-USER root
-RUN chown -R ${NB_UID} ${HOME}
-USER ${NB_USER}
-
-# RUN jupyter nbextension enable --py --sys-prefix widgetsnbextension
-
-EXPOSE 8866
-
-CMD ["/bin/bash", "run.sh"]
+CMD ["mamba", "run", "-p", "/home/user/env", "--no-capture-output", "voila", "--no-browser", "notebooks/"]
